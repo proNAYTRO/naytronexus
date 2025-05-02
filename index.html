@@ -1,222 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus Discord Server Builders</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naytro Nexus - Discord Server Tiers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #111;
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
       color: #fff;
-    }
-    header {
-      background-color: #1a1a1a;
-      text-align: center;
       padding: 20px;
+      text-align: center;
     }
-    header img {
-      max-width: 150px;
+    .logo {
+      width: 150px;
+      margin: 0 auto;
     }
     h1 {
-      margin-top: 10px;
-      color: #ff0000;
+      font-size: 2.5rem;
+      margin: 20px 0 10px;
+    }
+    p.description {
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto 40px;
     }
     .tiers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .tier {
-      perspective: 1000px;
-      width: 300px;
-      height: 360px;
-      margin: 30px; /* Increased margin for more space between boxes */
-      transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and shadow */
-    }
-    .tier:hover {
-      transform: translateY(-10px); /* Float effect */
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Glow effect */
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-    .tier.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      background-color: #222;
+    .card {
+      background-color: #111;
       border: 1px solid #333;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      border-radius: 16px;
       padding: 20px;
-      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     }
-    .card-front {
-      z-index: 2;
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
     }
-    .card-back {
-      transform: rotateY(180deg);
+    .card .price {
+      font-size: 2rem;
+      color: #f00;
+      font-weight: bold;
     }
-    .card-front h2,
-    .card-back h2 {
-      color: #ff0000;
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      color: #ccc;
     }
-    .card-front p {
-      margin: 10px 0;
+    .features li {
+      margin-bottom: 10px;
     }
-    .card-front button,
-    .card-back button {
-      background-color: #ff0000;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
+    .button {
+      background-color: #f00;
+      color: #fff;
       border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
     }
-    .card-back ol {
-      text-align: left;
-      padding-left: 20px;
-    }
-    .card-back a {
-      color: #00aff4;
-      display: inline-block;
-      margin-top: 10px;
-    }
-    .discord-invite {
-      text-align: center;
-      margin: 30px 0;
-    }
-    .discord-invite a {
-      display: inline-block;
-      width: 48px;
-      height: 48px;
-      background-image: url('discord.png');
-      background-size: cover;
-      text-indent: -9999px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1a1a1a;
-      font-size: 14px;
+    .button:hover {
+      background-color: #c00;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="naytro_nexus.png" alt="Nexus Logo" />
-    <h1>Nexus Discord Server Builders</h1>
-    <p>Your one-stop service for premium Discord server setups.</p>
-  </header>
+  <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="logo" />
+  <h1>Naytro Nexus Discord Services</h1>
+  <p class="description">
+    Professionally designed and automated Discord servers for communities, creators, and businesses.
+  </p>
 
-  <section class="tiers">
-    <!-- Basic Tier -->
-    <div class="tier">
-      <div class="card-inner">
-        <div class="card-front">
-          <h2>Basic Tier</h2>
-          <p>Ideal for small communities and starter servers.</p>
-          <p>Includes: Channels, Roles, Basic Bots</p>
-          <p><strong>$10</strong></p>
-          <button onclick="flipCard(this)">Order Now</button>
-        </div>
-        <div class="card-back">
-          <h2>How to Order</h2>
-          <ol>
-            <li>Click the Discord invite link below.</li>
-            <li>Join the Nexus Discord Server.</li>
-            <li>Go to the <strong>#orders</strong> channel.</li>
-            <li>Type <code>/order</code> and follow the prompts.</li>
-            <li>We'll guide you through payment and setup.</li>
-          </ol>
-          <a href="https://discord.gg/GPjuc9ykaQ" target="_blank">Join Discord</a>
-          <br />
-          <button onclick="flipCard(this)">Back</button>
-        </div>
-      </div>
+  <div class="tiers">
+    <div class="card">
+      <h2>Starter</h2>
+      <div class="price">$49</div>
+      <ul class="features">
+        <li>Up to 10 channels</li>
+        <li>Basic moderation bots</li>
+        <li>Custom welcome screen</li>
+        <li>1 revision</li>
+      </ul>
+      <button class="button">Order Now</button>
     </div>
-
-    <!-- Advanced Tier -->
-    <div class="tier">
-      <div class="card-inner">
-        <div class="card-front">
-          <h2>Advanced Tier</h2>
-          <p>Perfect for growing communities with extra needs.</p>
-          <p>Includes: Everything in Basic + Automations, Enhanced Roles, Custom Bot Setup</p>
-          <p><strong>$25</strong></p>
-          <button onclick="flipCard(this)">Order Now</button>
-        </div>
-        <div class="card-back">
-          <h2>How to Order</h2>
-          <ol>
-            <li>Click the Discord invite link below.</li>
-            <li>Join the Nexus Discord Server.</li>
-            <li>Go to the <strong>#orders</strong> channel.</li>
-            <li>Type <code>/order</code> and follow the prompts.</li>
-            <li>We'll guide you through payment and setup.</li>
-          </ol>
-          <a href="https://discord.gg/GPjuc9ykaQ" target="_blank">Join Discord</a>
-          <br />
-          <button onclick="flipCard(this)">Back</button>
-        </div>
-      </div>
+    <div class="card">
+      <h2>Pro</h2>
+      <div class="price">$99</div>
+      <ul class="features">
+        <li>Up to 25 channels</li>
+        <li>Advanced bot setup</li>
+        <li>Roles & permissions configured</li>
+        <li>Custom graphics</li>
+        <li>3 revisions</li>
+      </ul>
+      <button class="button">Order Now</button>
     </div>
-
-    <!-- Premium Tier -->
-    <div class="tier">
-      <div class="card-inner">
-        <div class="card-front">
-          <h2>Premium Tier</h2>
-          <p>For large-scale communities and businesses.</p>
-          <p>Includes: All Features + Custom Branding, Full Support, Security Setup</p>
-          <p><strong>$50</strong></p>
-          <button onclick="flipCard(this)">Order Now</button>
-        </div>
-        <div class="card-back">
-          <h2>How to Order</h2>
-          <ol>
-            <li>Click the Discord invite link below.</li>
-            <li>Join the Nexus Discord Server.</li>
-            <li>Go to the <strong>#orders</strong> channel.</li>
-            <li>Type <code>/order</code> and follow the prompts.</li>
-            <li>We'll guide you through payment and setup.</li>
-          </ol>
-          <a href="https://discord.gg/GPjuc9ykaQ" target="_blank">Join Discord</a>
-          <br />
-          <button onclick="flipCard(this)">Back</button>
-        </div>
-      </div>
+    <div class="card">
+      <h2>Ultimate</h2>
+      <div class="price">$199</div>
+      <ul class="features">
+        <li>Unlimited channels</li>
+        <li>Fully automated bots</li>
+        <li>Complete branding kit</li>
+        <li>Event planning setup</li>
+        <li>Ongoing support (1 month)</li>
+        <li>Unlimited revisions</li>
+      </ul>
+      <button class="button">Order Now</button>
     </div>
-  </section>
-
-  <div class="discord-invite">
-    <a href="https://discord.gg/GPjuc9ykaQ" target="_blank">Join us on Discord</a>
   </div>
-
-  <footer>
-    &copy; 2025 Nexus Server Builders. All rights reserved.
-  </footer>
-
-  <script>
-    function flipCard(button) {
-      const tier = button.closest('.tier');
-      tier.classList.toggle('flipped');
-    }
-  </script>
 </body>
 </html>
