@@ -1,218 +1,134 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Naytro Nexus - Discord Server Tiers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            transition: margin-right 0.3s ease; /* Transition for content margin */
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin: 20px 0 10px;
-            animation: fadeIn 1.7s ease forwards;
-        }
-        p.description {
-            color: #aaa;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            animation: fadeIn 2s ease forwards;
-        }
-        .navbar {
-            position: relative;
-            background-color: #111;
-            padding: 10px;
-        }
-        .toggle-button {
-            background-color: #f00;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-        .nav-content {
-            display: none;
-            position: fixed; /* Fixed position for sidebar */
-            top: 0;
-            right: 0; /* Align to the right */
-            background-color: #222;
-            width: 200px;
-            height: 100%;
-            border-radius: 8px 0 0 8px; /* Rounded corners on the left */
-            box-shadow: -2px 0 12px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease;
-            transform: translateX(100%); /* Initially hidden */
-        }
-        .nav-content.show {
-            display: block;
-            transform: translateX(0); /* Slide in */
-        }
-        .nav-content ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .nav-content li {
-            padding: 10px;
-        }
-        .nav-content a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .close-button {
-            background-color: transparent;
-            color: #fff;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: absolute;
-            top: 10px;
-            left: 10px; /* Position close button on the left */
-        }
-        .tiers {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            animation: fadeIn 2.2s ease forwards;
-        }
-        .card {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
-        }
-        .card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .card .price {
-            font-size: 2rem;
-            color: #f00;
-            font-weight: bold;
-        }
-        .features {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            color: #ccc;
-        }
-        .features li {
-            margin-bottom: 10px;
-        }
-        .button {
-            background-color: #f00;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #c00;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naytro Nexus - Discord Server Tiers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 20px 0 10px;
+      animation: fadeIn 1.7s ease forwards;
+    }
+    p.description {
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      animation: fadeIn 2s ease forwards;
+    }
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      animation: fadeIn 2.2s ease forwards;
+    }
+    .card {
+      background-color: #111;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+    }
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .card .price {
+      font-size: 2rem;
+      color: #f00;
+      font-weight: bold;
+    }
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      color: #ccc;
+    }
+    .features li {
+      margin-bottom: 10px;
+    }
+    .button {
+      background-color: #f00;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #c00;
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <button class="toggle-button" id="toggleButton">☰</button>
-        <div class="nav-content" id="navContent">
-            <button class="close-button" id="closeButton">×</button>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+  <h1>Naytro Nexus Discord Services</h1>
+  <p class="description">
+    Professionally designed and automated Discord servers for communities, creators, and businesses.
+  </p>
+
+  <div class="tiers">
+    <div class="card">
+      <h2>Starter</h2>
+      <div class="price">$49</div>
+      <ul class="features">
+        <li>Up to 10 channels</li>
+        <li>Basic moderation bots</li>
+        <li>Custom welcome screen</li>
+        <li>1 revision</li>
+      </ul>
+      <button class="button">Order Now</button>
     </div>
-
-    <h1>Naytro Nexus Discord Services</h1>
-    <p class="description">
-        Professionally designed and automated Discord servers for communities, creators, and businesses.
-    </p>
-
-    <div class="tiers">
-        <div class="card">
-            <h2>Starter</h2>
-            <div class="price">$49</div>
-            <ul class="features">
-                <li>Up to 10 channels</li>
-                <li>Basic moderation bots</li>
-                <li>Custom welcome screen</li>
-                <li>1 revision</li>
-            </ul>
-            <button class="button">Order Now</button>
-        </div>
-        <div class="card">
-            <h2>Pro</h2>
-            <div class="price">$99</div>
-            <ul class="features">
-                <li>Up to 25 channels</li>
-                <li>Advanced bot setup</li>
-                <li>Roles & permissions configured</li>
-                <li>Custom graphics</li>
-                <li>3 revisions</li>
-            </ul>
-            <button class="button">Order Now</button>
-        </div>
-        <div class="card">
-            <h2>Ultimate</h2>
-            <div class="price">$199</div>
-            <ul class="features">
-                <li>Unlimited channels</li>
-                <li>Fully automated bots</li>
-                <li>Complete branding kit</li>
-                <li>Event planning setup</li>
-                <li>Ongoing support (1 month)</li>
-                <li>Unlimited revisions</li>
-            </ul>
-            <button class="button">Order Now</button>
-        </div>
+    <div class="card">
+      <h2>Pro</h2>
+      <div class="price">$99</div>
+      <ul class="features">
+        <li>Up to 25 channels</li>
+        <li>Advanced bot setup</li>
+        <li>Roles & permissions configured</li>
+        <li>Custom graphics</li>
+        <li>3 revisions</li>
+      </ul>
+      <button class="button">Order Now</button>
     </div>
-
-    <script>
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            const navContent = document.getElementById('navContent');
-            const body = document.body;
-            navContent.classList.toggle('show');
-            if (navContent.classList.contains('show')) {
-                body.style.marginRight = '200px'; // Push content to the left
-            } else {
-                body.style.marginRight = '0'; // Reset margin
-            }
-        });
-
-        document.getElementById('closeButton').addEventListener('click', function() {
-            const navContent = document.getElementById('navContent');
-            const body = document.body;
-            navContent.classList.remove('show');
-            body.style.marginRight = '0'; // Reset margin
-        });
-    </script>
+    <div class="card">
+      <h2>Ultimate</h2>
+      <div class="price">$199</div>
+      <ul class="features">
+        <li>Unlimited channels</li>
+        <li>Fully automated bots</li>
+        <li>Complete branding kit</li>
+        <li>Event planning setup</li>
+        <li>Ongoing support (1 month)</li>
+        <li>Unlimited revisions</li>
+      </ul>
+      <button class="button">Order Now</button>
+    </div>
+  </div>
 </body>
 </html>
