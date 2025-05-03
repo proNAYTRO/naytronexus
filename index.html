@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naytro Nexus - Discord Server Tiers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     html {
       scroll-behavior: smooth;
@@ -17,7 +18,7 @@
       color: #fff;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
-      padding-top: 100px;
+      padding-top: 100px; /* prevents overlap from header */
     }
 
     @keyframes fadeIn {
@@ -105,95 +106,80 @@
       text-align: center;
     }
 
-    .tiers-table-container {
-      max-width: 1000px;
-      margin: 40px auto;
+    .pathway-section {
+      max-width: 900px;
+      margin: 60px auto;
       padding: 0 20px;
-      animation: fadeIn 2.2s ease forwards;
-      overflow-x: auto;
-    }
-
-    .tiers-table {
-      width: 100%;
-      border-collapse: collapse;
-      color: #fff;
-      font-size: 1rem;
       text-align: center;
-      background-color: #111;
-      border: 1px solid #333;
-      border-radius: 12px;
-      overflow: hidden;
     }
 
-    .tiers-table th,
-    .tiers-table td {
-      padding: 16px 12px;
-      border: 1px solid #222;
-    }
-
-    .tiers-table th {
-      background-color: #1a1a1a;
-      font-weight: 600;
+    .pathway-title {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
       color: #f00;
     }
 
-    .tiers-table .price {
-      color: #f00;
-      font-weight: bold;
-      font-size: 1.2rem;
-      display: block;
-      margin-top: 5px;
+    .pathway-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
 
-    .tiers-table td {
-      color: #ccc;
-    }
-
-    .tiers-table td:first-child {
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
       text-align: left;
-      color: #fff;
-      font-weight: 600;
     }
 
-    .button {
+    .step-number {
+      font-size: 1.5rem;
       background-color: #f00;
       color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background-color 0.3s ease;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      flex-shrink: 0;
     }
 
-    .button:hover {
+    .step-content h3 {
+      margin: 0 0 5px;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .step-content p {
+      margin: 0;
+      color: #aaa;
+    }
+
+    .pathway-button {
+      margin-top: 40px;
+      display: inline-block;
+      background-color: #f00;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .pathway-button:hover {
       background-color: #c00;
     }
 
-    @media (min-width: 768px) {
-      nav {
-        position: static;
-        height: auto;
-        width: auto;
-        background: none;
-        padding-top: 0;
-        right: 0 !important;
+    @media (max-width: 600px) {
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
 
-      .nav-links {
-        flex-direction: row;
-        justify-content: center;
-        gap: 40px;
-      }
-
-      .menu-toggle {
-        display: none;
-      }
-
-      body {
-        padding-top: 0;
+      .step-number {
+        margin-bottom: 10px;
       }
     }
   </style>
@@ -220,74 +206,40 @@
     Professionally designed and automated Discord servers for communities, creators, and businesses.
   </p>
 
-  <div class="tiers-table-container">
-    <table class="tiers-table">
-      <thead>
-        <tr>
-          <th>Features</th>
-          <th>Starter<br><span class="price">$49</span></th>
-          <th>Pro<br><span class="price">$99</span></th>
-          <th>Ultimate<br><span class="price">$199</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Max Channels</td>
-          <td>10</td>
-          <td>25</td>
-          <td>Unlimited</td>
-        </tr>
-        <tr>
-          <td>Moderation Bots</td>
-          <td>Basic</td>
-          <td>Advanced</td>
-          <td>Fully Automated</td>
-        </tr>
-        <tr>
-          <td>Welcome Screen</td>
-          <td>Custom</td>
-          <td>Custom</td>
-          <td>Custom</td>
-        </tr>
-        <tr>
-          <td>Roles & Permissions</td>
-          <td>–</td>
-          <td>Configured</td>
-          <td>Configured</td>
-        </tr>
-        <tr>
-          <td>Custom Graphics</td>
-          <td>–</td>
-          <td>Included</td>
-          <td>Branding Kit</td>
-        </tr>
-        <tr>
-          <td>Event Planning Setup</td>
-          <td>–</td>
-          <td>–</td>
-          <td>Included</td>
-        </tr>
-        <tr>
-          <td>Revisions</td>
-          <td>1</td>
-          <td>3</td>
-          <td>Unlimited</td>
-        </tr>
-        <tr>
-          <td>Support</td>
-          <td>–</td>
-          <td>–</td>
-          <td>1 Month</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://discord.gg/YNAJz2KCE6" class="button">Join to Order</a></td>
-          <td><a href="https://discord.gg/YNAJz2KCE6" class="button">Join to Order</a></td>
-          <td><a href="https://discord.gg/YNAJz2KCE6" class="button">Join to Order</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <section class="pathway-section">
+    <h2 class="pathway-title">How It Works</h2>
+    <div class="pathway-steps">
+      <div class="step">
+        <div class="step-number"><i class="fas fa-user-plus"></i></div>
+        <div class="step-content">
+          <h3>Join the Discord</h3>
+          <p>Click the button below to join our community server and explore the channels.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number"><i class="fas fa-cogs"></i></div>
+        <div class="step-content">
+          <h3>Choose a Tier</h3>
+          <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
+        <div class="step-content">
+          <h3>Message Us</h3>
+          <p>Send us a message on Discord to place your order and handle payment securely.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number"><i class="fas fa-server"></i></div>
+        <div class="step-content">
+          <h3>Get Your Server</h3>
+          <p>We build and deliver your server based on your selected package and preferences.</p>
+        </div>
+      </div>
+    </div>
+    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
+  </section>
 
   <script>
     function toggleMenu() {
