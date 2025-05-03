@@ -17,7 +17,7 @@
       color: #fff;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
-      padding-top: 100px; /* prevents overlap from header */
+      padding-top: 100px;
     }
 
     @keyframes fadeIn {
@@ -105,60 +105,66 @@
       text-align: center;
     }
 
-    .tiers {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .tiers-table-container {
       max-width: 1000px;
-      margin: 0 auto 60px;
-      animation: fadeIn 2.2s ease forwards;
+      margin: 40px auto;
       padding: 0 20px;
+      animation: fadeIn 2.2s ease forwards;
+      overflow-x: auto;
     }
 
-    .card {
+    .tiers-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
       background-color: #111;
       border: 1px solid #333;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+    .tiers-table th,
+    .tiers-table td {
+      padding: 16px 12px;
+      border: 1px solid #222;
     }
 
-    .card h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+    .tiers-table th {
+      background-color: #1a1a1a;
+      font-weight: 600;
+      color: #f00;
     }
 
-    .card .price {
-      font-size: 2rem;
+    .tiers-table .price {
       color: #f00;
       font-weight: bold;
+      font-size: 1.2rem;
+      display: block;
+      margin-top: 5px;
     }
 
-    .features {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
+    .tiers-table td {
       color: #ccc;
     }
 
-    .features li {
-      margin-bottom: 10px;
+    .tiers-table td:first-child {
+      text-align: left;
+      color: #fff;
+      font-weight: 600;
     }
 
     .button {
       background-color: #f00;
       color: #fff;
       border: none;
-      padding: 12px 24px;
+      padding: 10px 20px;
       font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
       transition: background-color 0.3s ease;
     }
 
@@ -214,44 +220,74 @@
     Professionally designed and automated Discord servers for communities, creators, and businesses.
   </p>
 
-<div class="card">
-  <h2>Starter</h2>
-  <div class="price">$49</div>
-  <ul class="features">
-    <li>Up to 10 channels</li>
-    <li>Basic moderation bots</li>
-    <li>Custom welcome screen</li>
-    <li>1 revision</li>
-  </ul>
-  <a href="https://discord.com/invite/yourserver" class="button">Order Now - DM Us for Payment</a>
-</div>
-
-<div class="card">
-  <h2>Pro</h2>
-  <div class="price">$99</div>
-  <ul class="features">
-    <li>Up to 25 channels</li>
-    <li>Advanced bot setup</li>
-    <li>Roles & permissions configured</li>
-    <li>Custom graphics</li>
-    <li>3 revisions</li>
-  </ul>
-  <a href="https://discord.com/invite/yourserver" class="button">Order Now - DM Us for Payment</a>
-</div>
-
-<div class="card">
-  <h2>Ultimate</h2>
-  <div class="price">$199</div>
-  <ul class="features">
-    <li>Unlimited channels</li>
-    <li>Fully automated bots</li>
-    <li>Complete branding kit</li>
-    <li>Event planning setup</li>
-    <li>Ongoing support (1 month)</li>
-    <li>Unlimited revisions</li>
-  </ul>
-  <a href="https://discord.gg/YNAJz2KCE6" class="button">Order Now - DM Us for Payment</a>
-</div>
+  <div class="tiers-table-container">
+    <table class="tiers-table">
+      <thead>
+        <tr>
+          <th>Features</th>
+          <th>Starter<br><span class="price">$49</span></th>
+          <th>Pro<br><span class="price">$99</span></th>
+          <th>Ultimate<br><span class="price">$199</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Max Channels</td>
+          <td>10</td>
+          <td>25</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <td>Moderation Bots</td>
+          <td>Basic</td>
+          <td>Advanced</td>
+          <td>Fully Automated</td>
+        </tr>
+        <tr>
+          <td>Welcome Screen</td>
+          <td>Custom</td>
+          <td>Custom</td>
+          <td>Custom</td>
+        </tr>
+        <tr>
+          <td>Roles & Permissions</td>
+          <td>–</td>
+          <td>Configured</td>
+          <td>Configured</td>
+        </tr>
+        <tr>
+          <td>Custom Graphics</td>
+          <td>–</td>
+          <td>Included</td>
+          <td>Branding Kit</td>
+        </tr>
+        <tr>
+          <td>Event Planning Setup</td>
+          <td>–</td>
+          <td>–</td>
+          <td>Included</td>
+        </tr>
+        <tr>
+          <td>Revisions</td>
+          <td>1</td>
+          <td>3</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <td>Support</td>
+          <td>–</td>
+          <td>–</td>
+          <td>1 Month</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a href="https://discord.gg/YNAJz2KCE6" class="button">Join to Order</a></td>
+          <td><a href="https://discord.gg/YNAJz2KCE6" class="button">Join to Order</a></td>
+          <td><a href="https://discord.gg/YNAJz2KCE6" class="button">Join to Order</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <script>
     function toggleMenu() {
