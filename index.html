@@ -64,13 +64,15 @@
     nav {
       display: flex;
       gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 16px; /* reduced gap to save space */
-      padding-right: 24px; /* ensures "Socials" isn't clipped by scrollbar */
+      gap: 16px;
+      padding-right: 24px;
     }
 
     .nav-links a {
@@ -83,6 +85,13 @@
 
     .nav-links a:hover {
       color: #f00;
+    }
+
+    @media (max-width: 1024px) {
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 768px) {
@@ -199,6 +208,40 @@
 
       .step-number {
         margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .pathway-title {
+        font-size: 1.8rem;
+      }
+
+      .pathway-button {
+        font-size: 0.9rem;
+      }
+
+      p.description {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .pathway-title {
+        font-size: 1.6rem;
+      }
+
+      .pathway-button {
+        font-size: 0.8rem;
+      }
+
+      p.description {
+        font-size: 0.8rem;
       }
     }
   </style>
