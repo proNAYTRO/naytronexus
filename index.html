@@ -27,7 +27,7 @@
 
     header {
       background: #000;
-      padding: 10px 20px;
+      padding: 10px 30px; /* increased padding to prevent edge overlap */
       position: fixed;
       top: 0;
       width: 100%;
@@ -49,21 +49,32 @@
     }
 
     .menu-toggle {
-  font-size: 2rem; /* slightly larger */
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1); /* translucent background */
-  border: 2px solid #fff;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-  z-index: 1002;
-  transition: background 0.3s, border 0.3s;
-}
+      font-size: 2rem;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      margin-right: 10px; /* keeps it away from scrollbar */
+      cursor: pointer;
+      z-index: 1002;
+      transition: background 0.3s, border 0.3s;
+    }
 
-.menu-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-  border-color: #f00;
-}
+    .menu-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      border-color: #f00;
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none; /* hide menu button on desktop */
+      }
+
+      nav {
+        display: none; /* optional: hide mobile nav on desktop */
+      }
+    }
 
     nav {
       position: fixed;
