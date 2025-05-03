@@ -35,6 +35,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       transition: all 0.3s ease;
     }
 
@@ -55,49 +56,56 @@
       border: 2px solid #fff;
       border-radius: 6px;
       padding: 6px 12px;
-      margin-right: 10px;
+      margin-left: auto;
       cursor: pointer;
-      z-index: 1002;
-      transition: background 0.3s, border 0.3s;
-    }
-
-    .menu-toggle:hover {
-      background-color: rgba(255, 255, 255, 0.25);
-      border-color: #f00;
+      display: none;
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      height: 100%;
-      width: 250px;
-      background-color: #111;
-      transition: right 0.3s ease;
-      padding-top: 80px;
-      z-index: 1000;
-    }
-
-    nav.open {
-      right: 0;
+      display: flex;
+      gap: 20px;
     }
 
     .nav-links {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 20px;
-      padding: 0 20px;
     }
 
     .nav-links a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .nav-links a:hover {
       color: #f00;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #111;
+        padding: 10px 0;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+      }
     }
 
     h1 {
@@ -198,17 +206,16 @@
   <header>
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
     <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
+    <nav id="navbar">
+      <div class="nav-links">
+        <a href="about.html">About Us</a>
+        <a href="join.html">Join Us</a>
+        <a href="samples.html">Samples</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="socials.html">Socials</a>
+      </div>
+    </nav>
   </header>
-
-  <nav id="navbar">
-    <div class="nav-links">
-      <a href="about.html">About Us</a>
-      <a href="join.html">Join Us</a>
-      <a href="samples.html">Samples</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="socials.html">Socials</a>
-    </div>
-  </nav>
 
   <h1>Naytro Nexus Discord Services</h1>
   <p class="description">
@@ -254,14 +261,8 @@
     function toggleMenu() {
       const nav = document.getElementById("navbar");
       const menuIcon = document.getElementById("menuIcon");
-
       nav.classList.toggle("open");
-
-      if (nav.classList.contains("open")) {
-        menuIcon.textContent = "×";
-      } else {
-        menuIcon.textContent = "☰";
-      }
+      menuIcon.textContent = nav.classList.contains("open") ? "×" : "☰";
     }
 
     window.addEventListener('scroll', function () {
