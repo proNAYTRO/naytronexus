@@ -197,7 +197,7 @@
 
   <header>
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
   </header>
 
   <nav id="navbar">
@@ -252,7 +252,16 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById("navbar").classList.toggle("open");
+      const nav = document.getElementById("navbar");
+      const menuIcon = document.getElementById("menuIcon");
+
+      nav.classList.toggle("open");
+
+      if (nav.classList.contains("open")) {
+        menuIcon.textContent = "×";
+      } else {
+        menuIcon.textContent = "☰";
+      }
     }
 
     window.addEventListener('scroll', function () {
