@@ -2,147 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naytro Nexus - Discord Server Tiers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     html {
       scroll-behavior: smooth;
     }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: #000;
       color: #fff;
-      padding-top: 80px;
+      padding: 0;
+      text-align: center;
       opacity: 0;
-      animation: fadeBody 1s ease forwards;
+      animation: fadeIn 1s ease forwards;
     }
 
-    @keyframes fadeBody {
+    @keyframes fadeIn {
       to { opacity: 1; }
+    }
+
+    /* Logo Section */
+    .logo-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: #000;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+
+    .site-logo {
+      height: 80px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .scrolled .site-logo {
+      transform: scale(0.7);
+      opacity: 0.5;
     }
 
     /* Navigation */
     nav {
-      position: fixed;
-      top: -80px;
-      left: 0;
-      right: 0;
       background-color: #111;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      z-index: 1002;
-      animation: slideNav 1.2s ease forwards;
-      animation-delay: 0.5s;
-    }
-
-    @keyframes slideNav {
-      to { top: 0; }
-    }
-
-    .logo {
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: #fff;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      z-index: 1003;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #fff;
-      margin: 4px 0;
-      transition: all 0.3s ease;
+      padding: 10px 20px;
+      position: sticky;
+      top: 90px;
+      z-index: 998;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
     .nav-links a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .nav-links a i {
-      margin-right: 8px;
+      transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      background-color: #f00;
-    }
-
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.85);
-      z-index: 1001;
-    }
-
-    .nav-overlay.active {
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        position: fixed;
-        top: 0;
-        left: -250px;
-        width: 220px;
-        height: 100vh;
-        background-color: #111;
-        padding: 60px 20px;
-        gap: 20px;
-        transition: left 0.4s ease;
-        z-index: 1002;
-      }
-
-      .nav-links.open {
-        left: 0;
-      }
-    }
-
-    h1, .description {
-      text-align: center;
+      color: #f00;
     }
 
     h1 {
       font-size: 2.5rem;
       margin: 20px 0 10px;
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeIn 1.7s ease forwards;
     }
 
-    .description {
+    p.description {
       color: #aaa;
       max-width: 600px;
       margin: 0 auto 40px;
-      animation: fadeInUp 1.2s ease forwards;
+      animation: fadeIn 2s ease forwards;
     }
 
     .tiers {
@@ -150,8 +90,8 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       max-width: 1000px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
+      margin: 0 auto;
+      animation: fadeIn 2.2s ease forwards;
     }
 
     .card {
@@ -161,17 +101,6 @@
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      transform: scale(0.95);
-      opacity: 0;
-    }
-
-    .card.visible {
-      animation: zoomIn 0.7s ease forwards;
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     .card:hover {
@@ -216,57 +145,38 @@
       background-color: #c00;
     }
 
+    /* Responsive */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .card h2 {
-        font-size: 1.5rem;
-      }
-      .card .price {
-        font-size: 1.6rem;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Logo Header -->
+  <header class="logo-header">
+    <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
+  </header>
+
   <!-- Navigation -->
   <nav>
-    <div class="logo">Naytro Nexus</div>
-    <div class="menu-toggle" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-links" id="navLinks">
-      <a href="about.html"><i class="fas fa-info-circle"></i>About Us</a>
-<a href="join.html"><i class="fas fa-user-plus"></i>Join Us</a>
-<a href="samples.html"><i class="fas fa-layer-group"></i>Samples</a>
-<a href="reviews.html"><i class="fas fa-star"></i>Reviews</a>
-<a href="socials.html"><i class="fas fa-share-alt"></i>Socials</a> 
+    <div class="nav-links">
+      <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+      <a href="join.html"><i class="fas fa-user-plus"></i> Join Us</a>
+      <a href="samples.html"><i class="fas fa-layer-group"></i> Samples</a>
+      <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+      <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
     </div>
   </nav>
-  <div class="nav-overlay" id="navOverlay"></div>
 
-  <!-- Hero Section -->
   <h1>Naytro Nexus Discord Services</h1>
   <p class="description">
     Professionally designed and automated Discord servers for communities, creators, and businesses.
   </p>
 
-  <!-- Pricing Tiers -->
   <div class="tiers">
     <div class="card">
       <h2>Starter</h2>
@@ -306,33 +216,16 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
-    // Animate cards on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.card').forEach(el => observer.observe(el));
-
-    // Slide-in menu toggle
-    const toggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('navLinks');
-    const overlay = document.getElementById('navOverlay');
-
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      overlay.classList.toggle('active');
-    });
-
-    overlay.addEventListener('click', () => {
-      nav.classList.remove('open');
-      overlay.classList.remove('active');
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('.logo-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
   </script>
+
 </body>
 </html>
