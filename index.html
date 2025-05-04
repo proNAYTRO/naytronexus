@@ -7,6 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -28,7 +32,7 @@
     header {
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(10px);
-      padding: 12px 40px;
+      padding: 12px 24px;
       position: fixed;
       top: 0;
       width: 100%;
@@ -53,20 +57,19 @@
     .menu-toggle {
       font-size: 2rem;
       color: #fff;
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
       border: none;
       padding: 6px 12px;
       border-radius: 6px;
       cursor: pointer;
       display: none;
+      z-index: 1002;
     }
 
     nav {
       display: flex;
       gap: 32px;
-      flex-wrap: wrap;
-      margin-left: auto;
-      margin-right: 80px; /* Pulling nav links closer to center */
+      margin-right: 60px;
     }
 
     .nav-links {
@@ -93,12 +96,15 @@
       }
 
       nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
         display: none;
+        background-color: rgba(0, 0, 0, 0.95);
         flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.9);
-        padding: 10px 0;
-        margin-right: 0;
+        align-items: center;
+        padding: 20px 0;
         backdrop-filter: blur(8px);
       }
 
@@ -108,9 +114,7 @@
 
       .nav-links {
         flex-direction: column;
-        align-items: flex-start;
-        padding-left: 20px;
-        gap: 16px;
+        gap: 18px;
       }
     }
 
