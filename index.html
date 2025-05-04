@@ -26,7 +26,8 @@
     }
 
     header {
-      background: #000;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
       padding: 12px 40px;
       position: fixed;
       top: 0;
@@ -64,13 +65,14 @@
       display: flex;
       gap: 32px;
       flex-wrap: wrap;
-      margin-right: 40px; /* pulls links slightly toward center */
+      margin-left: auto;
+      margin-right: 80px; /* Pulling nav links closer to center */
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
     }
 
     .nav-links a {
@@ -94,9 +96,10 @@
         width: 100%;
         display: none;
         flex-direction: column;
-        background-color: #111;
+        background-color: rgba(0, 0, 0, 0.9);
         padding: 10px 0;
         margin-right: 0;
+        backdrop-filter: blur(8px);
       }
 
       nav.open {
