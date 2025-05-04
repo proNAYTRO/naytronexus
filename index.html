@@ -168,6 +168,13 @@
       display: grid;
       place-items: center;
       font-weight: bold;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .step-number:hover {
+      background-color: #c00;
+      transform: scale(1.15);
     }
 
     .step-content h3 {
@@ -241,28 +248,28 @@
     <h2 class="pathway-title">How It Works</h2>
     <div class="pathway-steps">
       <div class="step">
-        <div class="step-number"><i class="fas fa-user-plus"></i></div>
+        <a href="discord.html" class="step-number"><i class="fas fa-user-plus"></i></a>
         <div class="step-content">
           <h3>Join the Discord</h3>
           <p>Click the button below to join our community server and explore the channels.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-number"><i class="fas fa-cogs"></i></div>
+        <a href="tier.html" class="step-number"><i class="fas fa-cogs"></i></a>
         <div class="step-content">
           <h3>Choose a Tier</h3>
           <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
+        <a href="message.html" class="step-number"><i class="fas fa-comment-dots"></i></a>
         <div class="step-content">
           <h3>Message Us</h3>
           <p>Send us a message on Discord to place your order and handle payment securely.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-number"><i class="fas fa-server"></i></div>
+        <a href="server.html" class="step-number"><i class="fas fa-server"></i></a>
         <div class="step-content">
           <h3>Get Your Server</h3>
           <p>We build and deliver your server based on your selected package and preferences.</p>
