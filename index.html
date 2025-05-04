@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naytro Nexus - Discord Server Tiers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -21,12 +21,6 @@
       background-color: #000;
       color: #fff;
       padding-top: 90px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
     }
 
     header {
@@ -62,13 +56,7 @@
       gap: 24px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
+    nav a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
@@ -79,20 +67,20 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
+    nav a:hover {
       color: #f00;
     }
 
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
-        background-color: #f00; /* Add a background color */
-        padding: 10px; /* Add some padding to make it square */
-        border-radius: 5px; /* Optional: add rounded corners */
+        background-color: #f00;
+        padding: 10px;
+        border-radius: 5px;
         color: #fff;
         font-size: 1.8rem;
-        width: 40px; /* Set a fixed width */
-        height: 40px; /* Set a fixed height to make it square */
+        width: 40px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -114,10 +102,6 @@
 
       nav.open {
         display: flex;
-      }
-
-      .nav-links {
-        flex-direction: column;
       }
     }
 
@@ -196,26 +180,6 @@
     .pathway-button:hover {
       background-color: #c00;
     }
-
-    @media (max-width: 600px) {
-      .step {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .step-number {
-        margin-bottom: 10px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .pathway-title {
-        font-size: 1.8rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -224,13 +188,11 @@
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
     <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
     <nav id="navbar">
-      <div class="nav-links">
-        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
-        <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join Us</a>
-        <a href="samples.html"><i class="fas fa-images"></i> Samples</a>
-        <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
-        <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
-      </div>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+      <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join Us</a>
+      <a href="samples.html"><i class="fas fa-images"></i> Samples</a>
+      <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+      <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
     </nav>
   </header>
 
@@ -271,7 +233,7 @@
         </div>
       </div>
     </div>
-    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
+    <a href="https://discord.gg/YNAJz2KCE6" class="pathway-button">Join Our Discord</a>
   </section>
 
   <script>
@@ -281,15 +243,6 @@
       nav.classList.toggle("open");
       icon.textContent = nav.classList.contains("open") ? "×" : "☰";
     }
-
-    window.addEventListener('scroll', function () {
-      const header = document.querySelector('header');
-      if (window.scrollY > 30) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
   </script>
 
 </body>
