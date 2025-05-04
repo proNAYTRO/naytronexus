@@ -158,6 +158,8 @@
       text-align: left;
       cursor: pointer;
       transition: transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
     }
 
     .step:hover {
@@ -217,14 +219,6 @@
         margin-bottom: 10px;
         animation: mobilePulse 1.8s infinite;
       }
-      
-.step {
-  text-decoration: none;
-  color: inherit;
-}
-.step * {
-  text-decoration: none !important;
-}
 
       h1 {
         font-size: 2rem;
@@ -246,6 +240,13 @@
         box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
       }
     }
+
+    /* Fix all underline issues inside step links */
+    .step, .step *, .step:visited, .step:hover, .step:focus {
+      text-decoration: none !important;
+      color: inherit;
+    }
+
   </style>
 </head>
 <body>
@@ -280,38 +281,4 @@
         </div>
       </a>
       <a href="tier.html" class="step">
-        <div class="step-number"><i class="fas fa-cogs"></i></div>
-        <div class="step-content">
-          <h3>Choose a Tier</h3>
-          <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
-        </div>
-      </a>
-      <a href="message.html" class="step">
-        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
-        <div class="step-content">
-          <h3>Message Us</h3>
-          <p>Send us a message on Discord to place your order and handle payment securely.</p>
-        </div>
-      </a>
-      <a href="server.html" class="step">
-        <div class="step-number"><i class="fas fa-server"></i></div>
-        <div class="step-content">
-          <h3>Get Your Server</h3>
-          <p>We build and deliver your server based on your selected package and preferences.</p>
-        </div>
-      </a>
-    </div>
-    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
-  </section>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("navbar");
-      const icon = document.getElementById("menuIcon");
-      nav.classList.toggle("open");
-      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
-    }
-  </script>
-
-</body>
-</html>
+        <div class="step-number"><i class="fas fa-cogs"></
