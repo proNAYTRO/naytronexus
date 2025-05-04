@@ -83,25 +83,34 @@
       }
 
       nav {
+        flex-direction: column;
         position: absolute;
         top: 70px;
-        right: 10px;
-        flex-direction: column;
+        left: 0;
+        width: 100%;
         background-color: rgba(30, 30, 30, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        padding: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         overflow: hidden;
         max-height: 0;
         opacity: 0;
         transition: max-height 0.4s ease, opacity 0.4s ease;
-        width: 200px;
       }
 
       nav.open {
-        max-height: 500px;
+        max-height: 300px;
         opacity: 1;
-        padding: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+        width: 100%;
       }
     }
 
@@ -201,12 +210,14 @@
   <header>
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
     <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-    <nav id="navbar" class="nav-links">
-      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-      <a href="join.html"><i class="fas fa-user-plus"></i> Join</a>
-      <a href="samples.html"><i class="fas fa-image"></i> Samples</a>
-      <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
-      <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
+    <nav id="navbar">
+      <div class="nav-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="join.html"><i class="fas fa-user-plus"></i> Join</a>
+        <a href="samples.html"><i class="fas fa-image"></i> Samples</a>
+        <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+        <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
+      </div>
     </nav>
   </header>
 
@@ -252,7 +263,8 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById("navbar").classList.toggle("open");
+      const navbar = document.getElementById("navbar");
+      navbar.classList.toggle("open");
     }
   </script>
 
