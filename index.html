@@ -7,6 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -14,9 +18,9 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      background-color: #000;
       color: #fff;
-      padding-top: 80px;
+      padding-top: 90px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
     }
@@ -26,17 +30,17 @@
     }
 
     header {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1001;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      align-items: center;
+      padding: 12px 24px;
+      transition: all 0.3s ease;
     }
 
     .site-logo {
@@ -44,96 +48,79 @@
     }
 
     .menu-toggle {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #fff;
       background: none;
       border: none;
       cursor: pointer;
       display: none;
+      z-index: 1002;
     }
 
     nav {
       display: flex;
-      gap: 28px;
-      align-items: center;
-      margin-right: 20px;
+      gap: 24px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 24px;
     }
 
     .nav-links a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 10px;
-      border-radius: 6px;
-      transition: background 0.3s;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      color: #f00;
     }
 
-    /* Mobile Styles */
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
-        z-index: 1002;
       }
 
       nav {
-        flex-direction: column;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: rgba(30, 30, 30, 0.95);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        overflow: hidden;
-        max-height: 0;
-        opacity: 0;
-        transition: max-height 0.4s ease, opacity 0.4s ease;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 0;
+        display: none;
       }
 
       nav.open {
-        max-height: 300px;
-        opacity: 1;
+        display: flex;
       }
 
       .nav-links {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        gap: 16px;
-      }
-
-      .nav-links a {
-        padding: 12px 0;
-        justify-content: center;
-        width: 100%;
-        text-align: center;
       }
     }
 
     h1 {
       font-size: 2.5rem;
-      margin: 40px 0 10px;
       text-align: center;
+      margin: 40px 0 10px;
     }
 
     p.description {
-      color: #aaa;
+      text-align: center;
       max-width: 600px;
       margin: 0 auto 40px;
-      text-align: center;
+      color: #aaa;
     }
 
     .pathway-section {
@@ -172,13 +159,11 @@
       display: grid;
       place-items: center;
       font-weight: bold;
-      flex-shrink: 0;
     }
 
     .step-content h3 {
       margin: 0 0 5px;
       font-size: 1.3rem;
-      color: #fff;
     }
 
     .step-content p {
@@ -211,6 +196,14 @@
       .step-number {
         margin-bottom: 10px;
       }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .pathway-title {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
@@ -218,12 +211,12 @@
 
   <header>
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
-    <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
     <nav id="navbar">
       <div class="nav-links">
-        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
-        <a href="join.html"><i class="fas fa-user-plus"></i> Join</a>
-        <a href="samples.html"><i class="fas fa-image"></i> Samples</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join Us</a>
+        <a href="samples.html"><i class="fas fa-images"></i> Samples</a>
         <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
         <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
       </div>
@@ -272,9 +265,20 @@
 
   <script>
     function toggleMenu() {
-      const navbar = document.getElementById("navbar");
-      navbar.classList.toggle("open");
+      const nav = document.getElementById("navbar");
+      const icon = document.getElementById("menuIcon");
+      nav.classList.toggle("open");
+      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
     }
+
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
   </script>
 
 </body>
