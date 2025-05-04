@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naytro Nexus - Discord Server Tiers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -27,7 +27,7 @@
 
     header {
       background: #000;
-      padding: 10px 16px;
+      padding: 12px 40px;
       position: fixed;
       top: 0;
       width: 100%;
@@ -45,47 +45,32 @@
     }
 
     .scrolled .site-logo {
-      transform: scale(0.8);
-      opacity: 0.7;
+      transform: scale(0.85);
+      opacity: 0.75;
     }
 
     .menu-toggle {
       font-size: 2rem;
       color: #fff;
       background-color: rgba(255, 255, 255, 0.1);
-      border: 2px solid #fff;
-      border-radius: 6px;
+      border: none;
       padding: 6px 12px;
-      margin-left: auto;
-      margin-inline-end: 10px;
-      box-sizing: border-box;
+      border-radius: 6px;
       cursor: pointer;
       display: none;
     }
 
     nav {
       display: flex;
-      gap: 16px;
+      gap: 32px;
       flex-wrap: wrap;
-      justify-content: flex-end;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
-      overflow: hidden;
-    }
-
-    nav.open {
-      display: flex;
-      flex-direction: column;
-      background-color: #111;
-      padding: 10px 0;
-      max-height: 500px;
-      opacity: 1;
+      margin-right: 40px; /* pulls links slightly toward center */
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding-right: 24px;
+      gap: 28px;
     }
 
     .nav-links a {
@@ -93,18 +78,11 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
-      white-space: nowrap;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
       color: #f00;
-    }
-
-    @media (max-width: 1024px) {
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-      }
     }
 
     @media (max-width: 768px) {
@@ -114,21 +92,22 @@
 
       nav {
         width: 100%;
-        max-height: 0;
-        opacity: 0;
-        transition: max-height 0.4s ease, opacity 0.4s ease;
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        padding: 10px 0;
+        margin-right: 0;
       }
 
       nav.open {
-        max-height: 300px;
-        opacity: 1;
+        display: flex;
       }
 
       .nav-links {
         flex-direction: column;
         align-items: flex-start;
         padding-left: 20px;
-        padding-right: 20px;
+        gap: 16px;
       }
     }
 
