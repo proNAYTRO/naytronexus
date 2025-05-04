@@ -169,24 +169,16 @@
       place-items: center;
       font-weight: bold;
       cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .step-number:hover {
-      background-color: #c00;
-      transform: scale(1.15);
-      box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+      transform: scale(1.1);
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
     }
 
-    /* Pulse animation for the first icon only */
-    .step-number.pulse {
-      animation: pulse 1.8s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
+    .step-number:active {
+      transform: scale(0.95);
     }
 
     .step-content h3 {
@@ -208,6 +200,7 @@
       font-size: 1rem;
       border-radius: 8px;
       text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
     .pathway-button:hover {
@@ -231,6 +224,22 @@
 
       .pathway-title {
         font-size: 1.8rem;
+      }
+
+      .step-number {
+        animation: mobilePulse 2s ease-in-out infinite;
+      }
+    }
+
+    @keyframes mobilePulse {
+      0% {
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 0px rgba(255, 0, 0, 0.4);
       }
     }
   </style>
@@ -260,36 +269,28 @@
     <h2 class="pathway-title">How It Works</h2>
     <div class="pathway-steps">
       <div class="step">
-        <a href="discord.html" class="step-number pulse" title="Learn more about joining the Discord">
-          <i class="fas fa-user-plus"></i>
-        </a>
+        <a href="discord.html" class="step-number"><i class="fas fa-user-plus"></i></a>
         <div class="step-content">
           <h3>Join the Discord</h3>
-          <p>Click the button below to join our community server and explore the channels.</p>
+          <p>Click the icon to join our community server and explore the channels.</p>
         </div>
       </div>
       <div class="step">
-        <a href="tier.html" class="step-number" title="View service tiers">
-          <i class="fas fa-cogs"></i>
-        </a>
+        <a href="tier.html" class="step-number"><i class="fas fa-cogs"></i></a>
         <div class="step-content">
           <h3>Choose a Tier</h3>
           <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
         </div>
       </div>
       <div class="step">
-        <a href="message.html" class="step-number" title="Message us on Discord">
-          <i class="fas fa-comment-dots"></i>
-        </a>
+        <a href="message.html" class="step-number"><i class="fas fa-comment-dots"></i></a>
         <div class="step-content">
           <h3>Message Us</h3>
           <p>Send us a message on Discord to place your order and handle payment securely.</p>
         </div>
       </div>
       <div class="step">
-        <a href="server.html" class="step-number" title="See how we deliver your server">
-          <i class="fas fa-server"></i>
-        </a>
+        <a href="server.html" class="step-number"><i class="fas fa-server"></i></a>
         <div class="step-content">
           <h3>Get Your Server</h3>
           <p>We build and deliver your server based on your selected package and preferences.</p>
