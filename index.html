@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naytro Nexus - Discord Server Tiers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -18,13 +21,13 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: #0e0e10;
+      color: #ffffff;
       padding-top: 90px;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(10px);
       position: fixed;
       top: 0;
@@ -49,7 +52,6 @@
       padding: 8px 10px;
       border-radius: 4px;
       display: none;
-      z-index: 1002;
     }
 
     nav {
@@ -80,7 +82,7 @@
     }
 
     .nav-links a:hover {
-      color: #f00;
+      color: #00ffff;
     }
 
     @media (max-width: 768px) {
@@ -112,11 +114,24 @@
       .nav-links a {
         font-size: 0.95rem;
       }
+    }
 
-      .nav-links a i {
-        font-size: 1rem;
-        margin-right: 6px;
-      }
+    .hero-banner {
+      background: linear-gradient(135deg, #00ffff20, #0e0e10);
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .hero-banner h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin: 0 0 10px;
+      color: #00ffff;
+    }
+
+    .hero-banner p {
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
     h1 {
@@ -142,7 +157,8 @@
     .pathway-title {
       font-size: 2.2rem;
       margin-bottom: 40px;
-      color: #f00;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .pathway-steps {
@@ -157,35 +173,36 @@
       gap: 20px;
       text-align: left;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease;
       text-decoration: none;
       color: inherit;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
     }
 
-    .step * {
-      text-decoration: none !important;
-      color: inherit !important;
-    }
+    .step:nth-child(1) { animation-delay: 0.2s; }
+    .step:nth-child(2) { animation-delay: 0.4s; }
+    .step:nth-child(3) { animation-delay: 0.6s; }
+    .step:nth-child(4) { animation-delay: 0.8s; }
 
     .step:hover {
       transform: translateY(-3px);
     }
 
     .step-number {
+      font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
-      background-color: #f00;
-      color: #fff;
+      background-color: #00ffff;
+      color: #000;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       display: grid;
       place-items: center;
       font-weight: bold;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .step:hover .step-number {
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      border: 2px solid #00bcd4;
+      animation: pulseGlow 2s infinite;
     }
 
     .step-content h3 {
@@ -201,16 +218,30 @@
     .pathway-button {
       margin-top: 40px;
       display: inline-block;
-      background-color: #f00;
-      color: #fff;
+      background-color: #00ffff;
+      color: #000;
       padding: 12px 24px;
       font-size: 1rem;
       border-radius: 8px;
       text-decoration: none;
+      font-weight: bold;
     }
 
     .pathway-button:hover {
-      background-color: #c00;
+      background-color: #00bcd4;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 5px #00ffff; }
+      50% { box-shadow: 0 0 20px #00ffff; }
+      100% { box-shadow: 0 0 5px #00ffff; }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 600px) {
@@ -218,11 +249,6 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-      }
-
-      .step-number {
-        margin-bottom: 10px;
-        animation: mobilePulse 1.8s infinite;
       }
 
       h1 {
@@ -233,20 +259,9 @@
         font-size: 1.8rem;
       }
     }
-
-    @keyframes mobilePulse {
-      0% {
-        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
-      }
-    }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -262,6 +277,11 @@
       </div>
     </nav>
   </header>
+
+  <div class="hero-banner">
+    <h1>Discord Solutions That Scale</h1>
+    <p>Automated, Branded, and Delivered Fast</p>
+  </div>
 
   <h1>Naytro Nexus Discord Services</h1>
   <p class="description">
