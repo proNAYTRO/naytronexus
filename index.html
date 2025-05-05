@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naytro Nexus - Discord Server Tiers</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -21,119 +18,114 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #0e0e10;
-      color: #ffffff;
+      background-color: #000;
+      color: #fff;
       padding-top: 90px;
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
+    /* Modern Header */
+    .modern-header {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 1001;
+      background: rgba(10, 10, 15, 0.75);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      padding: 12px 0;
+      transition: background 0.3s ease;
+    }
+
+    .modern-header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
     }
 
-    .site-logo {
-      height: 50px;
+    .logo {
+      height: 48px;
     }
 
-    .menu-toggle {
-      font-size: 1.5rem;
-      color: #fff;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: none;
-      cursor: pointer;
-      padding: 8px 10px;
-      border-radius: 4px;
-      display: none;
-    }
-
-    nav {
+    .nav-menu {
       display: flex;
-      gap: 24px;
+      gap: 28px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
+    .nav-menu a {
       color: #fff;
-      text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
+      text-decoration: none;
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: color 0.2s ease;
+      transition: color 0.3s ease;
     }
 
-    .nav-links a i {
-      font-size: 1rem;
-      vertical-align: middle;
-    }
-
-    .nav-links a:hover {
+    .nav-menu a:hover {
       color: #00ffff;
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        padding: 20px 0;
-        display: none;
-      }
-
-      nav.open {
+      .hamburger {
         display: flex;
       }
 
-      .nav-links {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: #0e0e10;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        transition: right 0.4s ease;
+        font-size: 1.2rem;
       }
 
-      .nav-links a {
-        font-size: 0.95rem;
+      .nav-menu.open {
+        right: 0;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
       }
     }
 
-    .hero-banner {
-      background: linear-gradient(135deg, #00ffff20, #0e0e10);
-      text-align: center;
-      padding: 60px 20px 40px;
-    }
-
-    .hero-banner h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      margin: 0 0 10px;
-      color: #00ffff;
-    }
-
-    .hero-banner p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
+    /* Main Content */
     h1 {
       font-size: 2.5rem;
       text-align: center;
@@ -157,8 +149,7 @@
     .pathway-title {
       font-size: 2.2rem;
       margin-bottom: 40px;
-      color: #00ffff;
-      font-family: 'Orbitron', sans-serif;
+      color: #f00;
     }
 
     .pathway-steps {
@@ -173,36 +164,35 @@
       gap: 20px;
       text-align: left;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.2s ease;
       text-decoration: none;
       color: inherit;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s forwards;
     }
 
-    .step:nth-child(1) { animation-delay: 0.2s; }
-    .step:nth-child(2) { animation-delay: 0.4s; }
-    .step:nth-child(3) { animation-delay: 0.6s; }
-    .step:nth-child(4) { animation-delay: 0.8s; }
+    .step * {
+      text-decoration: none !important;
+      color: inherit !important;
+    }
 
     .step:hover {
       transform: translateY(-3px);
     }
 
     .step-number {
-      font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
-      background-color: #00ffff;
-      color: #000;
+      background-color: #f00;
+      color: #fff;
       border-radius: 50%;
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
       font-weight: bold;
-      border: 2px solid #00bcd4;
-      animation: pulseGlow 2s infinite;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .step:hover .step-number {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
     }
 
     .step-content h3 {
@@ -218,30 +208,16 @@
     .pathway-button {
       margin-top: 40px;
       display: inline-block;
-      background-color: #00ffff;
-      color: #000;
+      background-color: #f00;
+      color: #fff;
       padding: 12px 24px;
       font-size: 1rem;
       border-radius: 8px;
       text-decoration: none;
-      font-weight: bold;
     }
 
     .pathway-button:hover {
-      background-color: #00bcd4;
-    }
-
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 5px #00ffff; }
-      50% { box-shadow: 0 0 20px #00ffff; }
-      100% { box-shadow: 0 0 5px #00ffff; }
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      background-color: #c00;
     }
 
     @media (max-width: 600px) {
@@ -249,6 +225,11 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+      }
+
+      .step-number {
+        margin-bottom: 10px;
+        animation: mobilePulse 1.8s infinite;
       }
 
       h1 {
@@ -259,30 +240,40 @@
         font-size: 1.8rem;
       }
     }
+
+    @keyframes mobilePulse {
+      0% {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+      }
+    }
   </style>
 </head>
-
 <body>
 
-  <header>
-    <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
-    <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
-    <nav id="navbar">
-      <div class="nav-links">
-        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
-        <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join Us</a>
+  <!-- MODERN HEADER -->
+  <header class="modern-header">
+    <div class="container">
+      <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="logo" />
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="navMenu" class="nav-menu">
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join</a>
         <a href="samples.html"><i class="fas fa-images"></i> Samples</a>
         <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
         <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <div class="hero-banner">
-    <h1>Discord Solutions That Scale</h1>
-    <p>Automated, Branded, and Delivered Fast</p>
-  </div>
-
+  <!-- MAIN CONTENT -->
   <h1>Naytro Nexus Discord Services</h1>
   <p class="description">
     Professionally designed and automated Discord servers for communities, creators, and businesses.
@@ -324,12 +315,13 @@
   </section>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById("navbar");
-      const icon = document.getElementById("menuIcon");
-      nav.classList.toggle("open");
-      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
-    }
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
   </script>
 
 </body>
