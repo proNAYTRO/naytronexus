@@ -23,32 +23,30 @@
       font-family: 'Inter', sans-serif;
       background-color: #0e0e10;
       color: #ffffff;
-      padding-top: 110px;
+      padding-top: 95px; /* Adjusted for fixed header */
     }
 
     header {
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(12px);
       position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 1100px;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
       z-index: 1001;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 18px 32px;
-      border: 2px solid #00ffff40;
+      border-bottom: 2px solid #00ffff40;
       box-shadow: 0 4px 16px rgba(0, 255, 255, 0.15);
-      border-radius: 50px;
+      border-radius: 0 0 50px 50px;
       transition: all 0.3s ease;
     }
 
     .site-logo {
       height: 50px;
-      border-radius: 10px;
     }
 
     .menu-toggle {
@@ -57,20 +55,20 @@
       background-color: rgba(255, 255, 255, 0.1);
       border: none;
       cursor: pointer;
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 8px 10px;
+      border-radius: 4px;
       display: none;
     }
 
     nav {
       display: flex;
-      gap: 32px;
+      gap: 24px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 24px;
     }
 
     .nav-links a {
@@ -86,6 +84,7 @@
 
     .nav-links a i {
       font-size: 1rem;
+      vertical-align: middle;
     }
 
     .nav-links a:hover {
@@ -99,7 +98,7 @@
 
       nav {
         position: absolute;
-        top: 100%;
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.95);
@@ -108,8 +107,6 @@
         gap: 16px;
         padding: 20px 0;
         display: none;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
       }
 
       nav.open {
