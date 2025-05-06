@@ -42,6 +42,7 @@
       border-radius: 40px;
       border: 2px solid #4c006b;
       box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+      overflow: hidden; /* FIX: prevent visual overflow at corners */
     }
 
     .site-logo {
@@ -56,8 +57,10 @@
       border: 2px solid #00ffff;
       cursor: pointer;
       padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: 12px; /* FIX: match header curvature */
       display: none;
+      z-index: 1002;
+      position: relative;
     }
 
     .menu-toggle:hover {
@@ -119,6 +122,11 @@
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
+        margin-left: auto;
+      }
+
+      header {
+        flex-wrap: wrap;
       }
 
       nav {
@@ -135,10 +143,13 @@
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         box-shadow: 0 4px 20px rgba(255, 0, 255, 0.1);
+        border-top: 2px solid #4c006b; /* FIX for top edge clarity */
       }
 
       nav.open {
         display: flex;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
 
       .nav-links {
