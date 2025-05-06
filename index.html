@@ -42,7 +42,6 @@
       border-radius: 40px;
       border: 2px solid #4c006b;
       box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
-      transition: all 0.3s ease;
     }
 
     .site-logo {
@@ -59,7 +58,6 @@
       padding: 8px 12px;
       border-radius: 8px;
       display: none;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .menu-toggle:hover {
@@ -71,7 +69,6 @@
       display: flex;
       align-items: center;
       gap: 28px;
-      transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
     .nav-links {
@@ -95,12 +92,6 @@
 
     .nav-links a i {
       margin-right: 6px;
-      transition: color 0.2s ease, text-shadow 0.2s ease;
-    }
-
-    .nav-links a:hover i {
-      color: #00ffff;
-      text-shadow: 0 0 6px #00ffff;
     }
 
     .join-discord {
@@ -126,18 +117,21 @@
 
       nav {
         position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
         background: linear-gradient(135deg, #0f002b, #240047);
         flex-direction: column;
         align-items: center;
-        overflow: hidden;
-        max-height: 0;
+        gap: 16px;
         padding: 0;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        box-shadow: 0 4px 20px rgba(255, 0, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(255, 0, 255, 0.15);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+        z-index: 1000;
       }
 
       nav.open {
@@ -147,7 +141,6 @@
 
       .nav-links {
         flex-direction: column;
-        gap: 16px;
       }
 
       .join-discord {
