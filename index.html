@@ -3,112 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Naytro Nexus</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap">
+  <title>Naytro Nexus - Discord Server Tiers</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #0f002b, #240047);
-      color: white;
+      color: #ffffff;
+      padding-top: 140px;
     }
 
     header {
       background: linear-gradient(135deg, #0f002b, #240047);
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      z-index: 1001;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 16px 32px;
-      border-radius: 2rem;
-      box-shadow: 0 0 24px rgba(255, 0, 255, 0.2);
-      margin: 20px;
-      position: relative;
+      border-radius: 40px;
+      border: 2px solid #4c006b;
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
     }
 
-    .logo img {
-      height: 48px;
+    .site-logo {
+      height: 50px;
+      border-radius: 10px;
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem;
+      color: #00ffff;
+      background-color: rgba(0, 255, 255, 0.1);
+      border: 2px solid #00ffff;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .menu-toggle:hover {
+      background-color: rgba(0, 255, 255, 0.2);
+      border-color: #00cccc;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 20px;
-      transition: all 0.3s ease-in-out;
+      gap: 28px;
     }
 
-    nav a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .nav-links a i {
+      margin-right: 6px;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .nav-links a:hover i {
+      color: #00ffff;
+      text-shadow: 0 0 6px #00ffff;
     }
 
     .join-discord {
-      background-color: #ff4eda;
+      background-color: #ff4eea;
+      color: white;
+      font-weight: bold;
       padding: 10px 20px;
       border-radius: 9999px;
-      font-weight: bold;
-      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .menu-toggle {
-      display: none;
-      background: #240047;
-      border: 2px solid cyan;
-      color: cyan;
-      padding: 10px;
-      font-size: 1.2rem;
-      border-radius: 12px;
+    .join-discord:hover {
+      background-color: #e344d6;
+      box-shadow: 0 0 12px #ff4eea;
     }
 
-    .section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .heading {
-      font-size: 2.5rem;
-      color: cyan;
-    }
-
-    .subtext {
-      color: #ccc;
-      font-size: 1.1rem;
-      margin-top: 8px;
-    }
-
-    /* Slide down animation for nav */
-    nav.open {
-      display: flex;
-      animation: slideDown 0.4s ease-out forwards;
-    }
-
-    @keyframes slideDown {
-      0% {
-        transform: translateY(-20px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    /* Fade-in animation for scroll */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
@@ -122,78 +129,245 @@
         background: linear-gradient(135deg, #0f002b, #240047);
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 16px;
         padding: 20px 0;
         display: none;
-        border-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
         box-shadow: 0 4px 20px rgba(255, 0, 255, 0.1);
-        margin-top: 8px;
       }
 
-      nav a {
-        font-size: 1.1rem;
+      nav.open {
+        display: flex;
+      }
+
+      .nav-links {
+        flex-direction: column;
       }
 
       .join-discord {
         margin-top: 10px;
       }
     }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0f002b, #240047);
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .hero-banner h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin: 0 0 10px;
+      color: #00ffff;
+    }
+
+    .hero-banner p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 40px 0 10px;
+    }
+
+    p.description {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: #aaa;
+    }
+
+    .pathway-section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .pathway-title {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .pathway-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.2s; }
+    .step:nth-child(2) { animation-delay: 0.4s; }
+    .step:nth-child(3) { animation-delay: 0.6s; }
+    .step:nth-child(4) { animation-delay: 0.8s; }
+
+    .step:hover {
+      transform: translateY(-3px);
+    }
+
+    .step-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      background-color: #00ffff;
+      color: #000;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      border: 2px solid #00bcd4;
+      animation: pulseGlow 2s infinite;
+    }
+
+    .step-content h3 {
+      margin: 0 0 5px;
+      font-size: 1.3rem;
+    }
+
+    .step-content p {
+      margin: 0;
+      color: #aaa;
+    }
+
+    .pathway-button {
+      margin-top: 40px;
+      display: inline-block;
+      background-color: #00ffff;
+      color: #000;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pathway-button:hover {
+      background-color: #00bcd4;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 5px #00ffff; }
+      50% { box-shadow: 0 0 20px #00ffff; }
+      100% { box-shadow: 0 0 5px #00ffff; }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .pathway-title {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <header>
-    <div class="logo">
-      <img src="https://i.imgur.com/LvS6o4K.png" alt="Nexus Logo" />
-    </div>
-    <button class="menu-toggle" onclick="toggleMenu()">✕</button>
+    <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
     <nav id="navbar">
-      <a href="#"><span>ℹ️</span> About Us</a>
-      <a href="#"><span>🔐</span> Join Us</a>
-      <a href="#"><span>🖼️</span> Samples</a>
-      <a href="#"><span>⭐</span> Reviews</a>
-      <a href="#"><span>🔗</span> Socials</a>
-      <a class="join-discord" href="#">Join our Discord</a>
+      <div class="nav-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join Us</a>
+        <a href="samples.html"><i class="fas fa-images"></i> Samples</a>
+        <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+        <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
+      </div>
+      <a href="https://discord.gg/YNAJz2KCE6" class="join-discord">Join our Discord</a>
     </nav>
   </header>
 
-  <section class="section fade-in">
-    <h1 class="heading">Discord Solutions That Scale</h1>
-    <p class="subtext">Automated, Branded, and Delivered Fast</p>
-  </section>
+  <div class="hero-banner">
+    <h1>Discord Solutions That Scale</h1>
+    <p>Automated, Branded, and Delivered Fast</p>
+  </div>
 
-  <section class="section fade-in">
-    <h2 class="heading">Naytro Nexus Discord Services</h2>
-    <p class="subtext">
-      Professionally designed and automated Discord servers for communities, creators, and businesses.
-    </p>
-  </section>
+  <h1>Naytro Nexus Discord Services</h1>
+  <p class="description">
+    Professionally designed and automated Discord servers for communities, creators, and businesses.
+  </p>
 
-  <section class="section fade-in">
-    <h2 class="heading">How It Works</h2>
-    <p class="subtext">
-      Choose a package, fill out a form, and receive a fully automated Discord server tailored to your needs.
-    </p>
+  <section class="pathway-section">
+    <h2 class="pathway-title">How It Works</h2>
+    <div class="pathway-steps">
+      <a href="discord.html" class="step">
+        <div class="step-number"><i class="fas fa-user-plus"></i></div>
+        <div class="step-content">
+          <h3>Join the Discord</h3>
+          <p>Click the button below to join our community server and explore the channels.</p>
+        </div>
+      </a>
+      <a href="tier.html" class="step">
+        <div class="step-number"><i class="fas fa-cogs"></i></div>
+        <div class="step-content">
+          <h3>Choose a Tier</h3>
+          <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
+        </div>
+      </a>
+      <a href="message.html" class="step">
+        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
+        <div class="step-content">
+          <h3>Message Us</h3>
+          <p>Send us a message on Discord to place your order and handle payment securely.</p>
+        </div>
+      </a>
+      <a href="server.html" class="step">
+        <div class="step-number"><i class="fas fa-server"></i></div>
+        <div class="step-content">
+          <h3>Get Your Server</h3>
+          <p>We build and deliver your server based on your selected package and preferences.</p>
+        </div>
+      </a>
+    </div>
+    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
   </section>
 
   <script>
     function toggleMenu() {
       const nav = document.getElementById("navbar");
+      const icon = document.getElementById("menuIcon");
       nav.classList.toggle("open");
+      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
     }
-
-    // Scroll Animation
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
   </script>
+
 </body>
 </html>
