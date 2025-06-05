@@ -159,6 +159,21 @@
       font-size: 3rem;
       margin: 0 0 10px;
       color: #00ffff;
+      display: inline-block;
+    }
+
+    .split-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: wordFadeIn 0.6s forwards;
+    }
+
+    @keyframes wordFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-banner p {
@@ -314,7 +329,7 @@
   </header>
 
   <div class="hero-banner">
-    <h1>Discord Solutions That Scale</h1>
+    <h1 id="split-title">Discord Solutions That Scale</h1>
     <p>Automated, Branded, and Delivered Fast</p>
   </div>
 
@@ -365,6 +380,21 @@
       nav.classList.toggle("open");
       icon.textContent = nav.classList.contains("open") ? "×" : "☰";
     }
+
+    // Split Text Animation
+    window.addEventListener("DOMContentLoaded", () => {
+      const title = document.getElementById("split-title");
+      const words = title.textContent.split(" ");
+      title.innerHTML = "";
+
+      words.forEach((word, index) => {
+        const span = document.createElement("span");
+        span.textContent = word + " ";
+        span.classList.add("split-word");
+        span.style.animationDelay = `${index * 0.3}s`;
+        title.appendChild(span);
+      });
+    });
   </script>
 
 </body>
